@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../../../build/react.min.js"></script>
+        <script src="../../../build/JSXTransformer.js"></script>
+        <title>React Components</title>
+    </head>
+    <body>
+    <div id="react-container"></div>
+    <script type="text/jsx">
+        var MyComponent = React.createClass({
+            render: function() {
+                return <div>My React Component</div>;
+            }
+        });
+
+        /* 1. 重复利用创建的标签 2. 在对应目录范围内渲染相关的内容 */
+
+        React.render( <div>
+                    <MyComponent />
+                    <MyComponent />
+                    <MyComponent />
+                    </div>
+            , document.getElementById('react-container'));
+    </script>
+    </body>
+</html>

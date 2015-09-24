@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Component Lifecycle</title>
+    
+    <script src="../../../build/react.min.js"></script>
+    <script src="../../../build/JSXTransformer.js"></script>
+
+    <style type="text/css">
+        div {
+            background-color: blue;
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+<script type="text/jsx">
+    var Box = React.createClass( {
+        /*虚拟元素被插入以前*/
+        componentWillMount: function() {
+            alert("component is about to mount");
+        },
+        /*虚拟元素被插入以后*/
+        componentDidMount: function() {
+            alert('component has mounted')
+        },
+        render: function() {
+            return <div></div>;
+        }
+    });
+
+    React.render(<Box />, document.body);
+
+    var getRidOfBox = document.getElementsByTagName('div')[0];
+    getRidOfBox.onclick = function() {
+        /*移除对应的虚拟元素*/    
+        React.unmountComponentAtNode(document.body);
+        alert("component is unmounted")
+    }
+
+
+
+</script>
+</body>
+</html>

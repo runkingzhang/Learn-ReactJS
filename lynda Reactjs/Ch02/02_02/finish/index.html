@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+         <script src="../../../build/react.min.js"></script>
+         <script src="../../../build/JSXTransformer.js"></script>
+        <title>My First React File</title>
+    </head>
+    <body>
+
+    <script type="text/jsx">
+         /* 相当于新疆了一个叫做HelloWorld的html标签 会通过翻译后形成对应的js语句和代码 */
+        var HelloWorld = React.createClass({
+            render: function() {
+                return (
+                    <div>
+                        <h1>Hello World</h1>
+                        <p>This is some text</p>
+                    </div>
+                    );
+            }
+        });
+        
+        /* 在document.body注入HelloWorld */
+        React.render(<HelloWorld />, document.body);
+
+    </script>
+    </body>
+</html>

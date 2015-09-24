@@ -1,0 +1,10 @@
+sudo: false
+install:
+  - npm install
+language: node_js
+node_js:
+  - "iojs"
+script:
+  - npm run lint
+  - flow check
+  - npm test

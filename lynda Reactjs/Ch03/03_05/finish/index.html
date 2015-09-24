@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <script src="../../../build/react.min.js"></script>
+        <script src="../../../build/JSXTransformer.js"></script>
+
+        <title>React Components</title>
+    </head>
+    <body>
+    <div id="react-container"></div>
+    <script type="text/jsx">
+        /*方法和默认状态*/ 
+        var Checkbox = React.createClass({
+            /*创建后的初始化元素*/ 
+            getInitialState: function() {
+                return {checked: true}
+            },
+            /*这个元素上面创建的方法*/
+            handleCheck: function() {
+                this.setState({checked: !this.state.checked})
+            },
+
+            render: function() {
+                /*根据状态变化变量*/
+                var msg;
+                if(this.state.checked) {
+                    msg = "checked";
+                }
+                else {
+                    msg = "unchecked";
+                }
+                return (<div>
+
+                         /*给input 加上对应的默认方法 和附加上onChange的方法*/  
+                         /*这边不要忘记对应的默认状态*/ 
+                        <input type="checkbox" onChange={this.handleCheck} 
+                        defaultChecked={this.state.checked}/>
+                        <p>This box is {msg}.</p>
+                    </div>);
+            }
+        });
+
+        React.render(<Checkbox />,
+            document.getElementById('react-container'));
+    </script>
+    </body>
+</html>

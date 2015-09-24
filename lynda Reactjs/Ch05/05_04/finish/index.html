@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Component Lifecycle</title>
+   
+    <script src="../../../build/react.min.js"></script>
+    <script src="../../../build/JSXTransformer.js"></script>
+
+
+</head>
+<body>
+<script type="text/jsx">
+    var Box = React.createClass( {
+        getDefaultProps: function() {
+            return {
+                colorIndex: -1
+            }
+        },
+        /*初始化状态*/
+        getInitialState: function() {
+            return {
+                backgroundColor: "blue",
+                height: 200,
+                width: 200
+            }
+        },
+        update: function() {
+            /*依次变化颜色状态*/
+            this.setProps({colorIndex: this.props.colorIndex + 1});
+        },
+        /*对应的初始化状态内容 对应的颜色的变化*/
+        componentWillReceiveProps: function(nextProps) {
+            var color = this.props.colors.split(',')[nextProps.colorIndex];
+            if(!color) {this.setProps({colorIndex:0})}
+            this.setState({backgroundColor: color});
+        },
+        render: function() {
+            return <div style={this.state} onClick={this.update}></div>;
+        }
+    });
+
+    React.render(<Box colors="Red,DarkMagenta,Salmon,Chartreuse"/>, document.body);
+
+
+
+</script>
+</body>
+</html>
